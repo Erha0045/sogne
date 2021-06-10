@@ -31,6 +31,15 @@ public class Sogne {
         this.kommune = kommune;
     }
 
+    public Sogne(int id, int sognekode, String navn, double smittetryk, Date nedlukningStart, Kommune kommune) {
+        this.id = id;
+        this.sognekode = sognekode;
+        this.navn = navn;
+        this.smittetryk = smittetryk;
+        this.nedlukningStart = nedlukningStart;
+        this.kommune = kommune;
+    }
+
     public int getId() {
         return id;
     }
