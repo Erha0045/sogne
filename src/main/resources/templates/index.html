@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sogne Liste</title>
+
+</head>
+<body>
+<h1>SogneListe</h1>
+<table>
+  <tr>
+    <th>Sognkode</th>
+    <th>Navn</th>
+    <th>Kommune</th>
+    <th>Smittetryk</th>
+    <th>Nedlukningstartdato</th>
+  </tr>
+  <tr th:each="sogne : ${sogneSet}">
+    <td th:text="${sogne.sognekode}">aaxx</td>
+    <td th:text="${sogne.navn}">bbyy</td>
+    <td th:text="${sogne.kommune}"></td>
+    <td th:text="${sogne.smittetryk}"></td>
+    <td th:text="${sogne.nedlukningStart}"></td>
+  </tr>
+</table>
+</body>
+</html>

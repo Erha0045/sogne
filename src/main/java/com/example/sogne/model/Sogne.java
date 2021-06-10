@@ -2,6 +2,7 @@ package com.example.sogne.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "sogne")
@@ -12,19 +13,14 @@ public class Sogne {
     private int id;
     private int sognekode;
     private String navn;
-    private String kommune;
-    private double smitteryk;
+    private double smittetryk;
     private Date nedlukningStart;
 
-    public Sogne() {
-    }
+    @OneToOne
+    @JoinColumn(name = "kommune_id", nullable = false)
+    private Kommune kommune;
 
-    public Sogne(int sognekode, String navn, String kommune, double smitteryk, Date nedlukningStart) {
-        this.sognekode = sognekode;
-        this.navn = navn;
-        this.kommune = kommune;
-        this.smitteryk = smitteryk;
-        this.nedlukningStart = nedlukningStart;
+    public Sogne() {
     }
 
     public int getId() {
@@ -51,20 +47,12 @@ public class Sogne {
         this.navn = navn;
     }
 
-    public String getKommune() {
-        return kommune;
+    public double getSmittetryk() {
+        return smittetryk;
     }
 
-    public void setKommune(String kommune) {
-        this.kommune = kommune;
-    }
-
-    public double getSmitteryk() {
-        return smitteryk;
-    }
-
-    public void setSmitteryk(double smitteryk) {
-        this.smitteryk = smitteryk;
+    public void setSmittetryk(double smittetryk) {
+        this.smittetryk = smittetryk;
     }
 
     public Date getNedlukningStart() {
@@ -75,15 +63,23 @@ public class Sogne {
         this.nedlukningStart = nedlukningStart;
     }
 
+    public Kommune getKommune() {
+        return kommune;
+    }
+
+    public void setKommune(Kommune kommune) {
+        this.kommune = kommune;
+    }
+
     @Override
     public String toString() {
         return "Sogne{" +
                 "id=" + id +
                 ", sognekode=" + sognekode +
                 ", navn='" + navn + '\'' +
-                ", kommune='" + kommune + '\'' +
-                ", smitteryk=" + smitteryk +
+                ", smittetryk=" + smittetryk +
                 ", nedlukningStart=" + nedlukningStart +
+                ", kommune=" + kommune +
                 '}';
     }
 }
