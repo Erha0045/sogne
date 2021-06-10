@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDate;
@@ -51,7 +49,28 @@ SogneRepository sogneRepository;
     }
 
     @GetMapping("/delete")
-    public String deleteSogne(WebRequest request) {
-        return  "/delete";
+    public String delete(){
+        return "/delete";
     }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam("id")int id) {
+        sogneRepository.deleteById(id);
+        return  "redirect:/";
+    }
+
+//    @GetMapping("/update/{id}")
+//    public String update(@PathVariable("id") int id, Model modelMods, Model modelBrands){
+//        modelMods.addAttribute("sogne", sogneRepository.findById(id));
+//        //add brands to choose from
+//        modelBrands.addAttribute("brands", brandService.findAll());
+//        return "update";
+//    }
+//
+//    @PostMapping("/update")
+//    public String update(@ModelAttribute Mod mod){
+//        //update by using update service
+//        modService.update(mod);
+//        return "redirect:/mods";
+//    }
 }
