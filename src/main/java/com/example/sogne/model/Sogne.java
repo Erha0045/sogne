@@ -23,6 +23,14 @@ public class Sogne {
     public Sogne() {
     }
 
+    public Sogne(int sognekode, String navn, double smittetryk, Date nedlukningStart, Kommune kommune) {
+        this.sognekode = sognekode;
+        this.navn = navn;
+        this.smittetryk = smittetryk;
+        this.nedlukningStart = nedlukningStart;
+        this.kommune = kommune;
+    }
+
     public int getId() {
         return id;
     }

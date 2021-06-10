@@ -16,8 +16,10 @@ import java.util.Optional;
 @RestController
 public class SogneController {
 
-    @Autowired
-    SogneRepository sogneRepository;
+//    @Autowired
+//    SogneRepository sogneRepository;
+
+    private SogneRepository sogneRepository;
 
     public SogneController(SogneRepository sogneRepository) {
         this.sogneRepository = sogneRepository;
